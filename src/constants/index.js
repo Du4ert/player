@@ -1,0 +1,10 @@
+export const PLAY = 'PLAY';
+export const PAUSE = 'PAUSE';
+export const SELECT_TRACK = 'SELECT_TRACK';
+export const FILTER = 'FILTER';
+export const NEXT = 'NEXT';
+export const PREV = 'PREV';
+export const TICK = 'TICK';
+export const SET_TIMER_ID = 'SET_TIMER_ID';
+export const SET_TIME = 'SET_TIME';
+export const SET_VOLUME = 'SET_VOLUME';

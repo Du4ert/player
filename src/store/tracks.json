@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "author": "b",
+    "name": "Trip condition",
+    "duration": "204.982857",
+    "url": "http://sampleswap.org/mp3/artist/30605/B_Trip-Condition-160.mp3"
+  },
+  {
+    "id": 2,
+    "author": "alienzzz",
+    "name": "Maniac in the desert",
+    "duration": "410.540408",
+    "url": "http://sampleswap.org/mp3/artist/30220/alienzzz_maniac-in-the-desert-160.mp3"
+  },
+  {
+    "id": 3,
+    "author": "steve",
+    "name": "raw",
+    "duration": "192.052245",
+    "url": "http://sampleswap.org/mp3/artist/2590/steve_raw2-160.mp3"
+  },
+  {
+    "id": 4,
+    "author": "solid xciter",
+    "name": "Escape",
+    "duration": "306.181224",
+    "url": "http://sampleswap.org/mp3/artist/31511/soLid-Xciter_Escape-160.mp3"
+  },
+  {
+    "id": 5,
+    "author": "beatnabob",
+    "name": "Flying Higher(Shankar Mix)",
+    "duration": "424.045714",
+    "url": "http://sampleswap.org/mp3/artist/29716/BeatNabob_Flying-HigherShankar-Mix-160.mp3"
+  }
+]

@@ -1,0 +1,62 @@
+@import './palette.scss';
+
+.player {
+  width: 90%;
+  margin: 10px auto;
+  display: flex;
+  justify-content: space-between;
+}
+.player-buttons {
+  display: flex;
+}
+.player-btn {
+  display: inline-block;
+  width: 20px;
+  height: 26px;
+  margin: 0 10px;
+  background: url('img/controls.png') top no-repeat;
+}
+.btn-prev {
+  background-position-x: 0px;
+}
+.btn-pause {
+  background-position-x: -14px;
+  background-position-y: -24px;
+}
+.btn-play {
+  background-position-x: 2px;
+  background-position-y: -24px;
+}
+.btn-next {
+  background-position-x: -14px;
+}
+
+%range-controls {
+  background: $background-color;
+  width: 60%;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.player-timestamp {
+  @extend %range-controls;
+  width: 60%;
+}
+.player-volume {
+  @extend %range-controls;
+  width: 100px;
+}
+%filler {
+  box-sizing: content-box;
+  height: 100%;
+  width: 0%;
+  max-width: 100%;
+  background-color: red;
+  box-shadow: inset 7px 9px 15px -9px rgba(0,0,0,0.75);
+}
+
+.timestamp-filler {
+  @extend %filler
+}
+.volume-filler {
+  @extend %filler
+}

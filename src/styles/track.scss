@@ -1,0 +1,18 @@
+@import './palette.scss';
+.track {
+  padding: 10px;
+}
+.track_selected {
+  background: $divider-color;
+}
+.track-author {
+  float: left;
+  font-weight: bold;
+  margin-left: 10px;
+}
+.track-name {
+
+}
+.track-duration {
+  float: right;
+}
