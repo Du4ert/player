@@ -45,18 +45,11 @@
   @extend %range-controls;
   width: 100px;
 }
-%filler {
+.filler {
   box-sizing: content-box;
   height: 100%;
   width: 0%;
   max-width: 100%;
   background-color: red;
   box-shadow: inset 7px 9px 15px -9px rgba(0,0,0,0.75);
-}
-
-.timestamp-filler {
-  @extend %filler
-}
-.volume-filler {
-  @extend %filler
 }

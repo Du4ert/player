@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import '../styles/player.scss';
+import Range from './Range';
 
 class Player extends Component
 {
@@ -10,23 +11,6 @@ class Player extends Component
     } else {
       this.audio.pause();
     }
-  }
-  onTimestampClickHandler(event)
-  {
-    if (!this.props.trackUrl) return;
-    let secInPx = this.props.duration / parseFloat(this.timestamp.clientWidth);
-    let leftX = this.timestamp.getBoundingClientRect().left + window.pageXOffset;
-    let time = (event.pageX - leftX) * secInPx;
-    this.audio.currentTime = time;
-    this.props.setTime(time);
-  }
-  onVolumeClickHandler(event)
-  {
-    let volInPx = 1 / parseFloat(this.volume.clientWidth);
-    let leftX = this.volume.getBoundingClientRect().left + window.pageXOffset;
-    let volume = (event.pageX - leftX) * volInPx;
-    this.audio.volume = volume;
-    this.props.onVolumeChange(volume);
   }
   render()
   {
@@ -48,18 +32,20 @@ class Player extends Component
           onEnded={onTrackEnd}
           preload="true"
         />
-        <div className="player-timestamp"
-          ref={elem => this.timestamp = elem}
-          onClick={this.onTimestampClickHandler.bind(this)}>
-          <div className="timestamp-filler"
-            style={{width: this.props.currentTime * percPerSec + '%'}}></div>
-        </div>
-        <div className="player-volume"
-          ref={elem => this.volume = elem}
-          onClick={this.onVolumeClickHandler.bind(this)}>
-          <div className="volume-filler"
-            style={{width: this.props.volume * 100 + '%'}}></div>
-        </div>
+        <Range
+          className="player-timestamp"
+          value={this.props.currentTime}
+          min={0}
+          max={this.props.duration}
+          onChange={()=> {}}
+         />
+        <Range
+          className="player-volume"
+          value={this.props.volume}
+          min={0}
+          max={1}
+          onChange={()=> {}}
+        />
       </div>
     )
   }
