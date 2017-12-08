@@ -5,46 +5,77 @@ import Range from './Range';
 
 class Player extends Component
 {
+  constructor(props) {
+    super(props);
+    this.onTimestampChange = this.onTimestampChange.bind(this);
+    this.onTimestampChangeEnd = this.onTimestampChangeEnd.bind(this);
+    this.onVolumeChange = this.onVolumeChange.bind(this);
+  }
   componentDidUpdate() {
     if (this.props.isPlaying) {
       this.audio.play();
     } else {
       this.audio.pause();
     }
+    this.audio.volume = this.props.volume;
+  }
+  onTimestampChange(value) {
+    this.props.pause();
+    this.props.setTime(value);
+    this.audio.currentTime = value;
+  }
+  onTimestampChangeEnd() {
+    this.props.play();
+  }
+  onVolumeChange(value) {
+    this.props.setVolume(value);
   }
   render()
   {
-    const { onPlayClick, onPauseClick, onPrevClick, onNextClick, onTrackEnd } = this.props;
-    const percPerSec = 100 / this.props.duration;
+    const {
+       play,
+       pause,
+       prev,
+       next,
+       trackEnd,
+       duration,
+       volume,
+       currentTime,
+       trackUrl,
+       isPlaying
+    } = this.props;
+
     return (
       <div className="player">
         <div className="player-buttons">
-          <button className="player-btn btn-prev" onClick={onPrevClick}></button>
+          <button className="player-btn btn-prev" onClick={prev}></button>
           {
-            this.props.isPlaying ?
-            <button className="player-btn btn-pause" onClick={onPauseClick}></button>:
-            <button className="player-btn btn-play" onClick={onPlayClick}></button>
+            isPlaying ?
+            <button className="player-btn btn-pause" onClick={pause}></button>:
+            <button className="player-btn btn-play" onClick={play}></button>
           }
-          <button className="player-btn btn-next" onClick={onNextClick}></button>
+          <button className="player-btn btn-next" onClick={next}></button>
         </div>
-        <audio src={this.props.trackUrl}
+        <audio src={trackUrl}
           ref={elem => this.audio = elem}
-          onEnded={onTrackEnd}
+          onEnded={trackEnd}
           preload="true"
         />
         <Range
           className="player-timestamp"
-          value={this.props.currentTime}
+          value={currentTime}
           min={0}
-          max={this.props.duration}
-          onChange={()=> {}}
+          max={duration}
+          onChange={this.onTimestampChange}
+          onChangeEnd={this.onTimestampChangeEnd}
          />
         <Range
           className="player-volume"
-          value={this.props.volume}
+          value={volume}
           min={0}
           max={1}
-          onChange={()=> {}}
+          onChange={this.onVolumeChange}
+          onChangeEnd={() => {}}
         />
       </div>
     )

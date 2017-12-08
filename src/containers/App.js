@@ -9,16 +9,16 @@ const App = ({
   state, actions
 }) => {
   const trackData = state.tracks.filter(track => track.id === state.trackId)[0] || {};
-  const trackClickHandler = (id) => {
+  const trackSelectHandler = (id) => {
     if (id === state.trackId) {
       if (state.isPlaying) {
-        pauseClickHandler();
+        pauseHandler();
       } else {
-        playClickHandler();
+        playHandler();
       }
     } else {
       actions.setTrack(id);
-      playClickHandler();
+      playHandler();
     }
   }
   function timeCalcStart() {
@@ -28,19 +28,19 @@ const App = ({
   function unsetTimer() {
     if (state.timerId) clearInterval(state.timerId);
   }
-  function pauseClickHandler() {
+  function pauseHandler() {
     clearInterval(state.timerId);
     actions.pause();
   }
-  function playClickHandler() {
+  function playHandler() {
     timeCalcStart();
     actions.play();
   }
-  function nextClickHandler() {
+  function nextHandler() {
     timeCalcStart();
     actions.nextTrack();
   }
-  function prevClickHandler() {
+  function prevHandler() {
     timeCalcStart();
     actions.prevTrack();
   }
@@ -53,18 +53,18 @@ const App = ({
       volume={state.volume}
       setTime={actions.setTime}
       isPlaying={state.isPlaying}
-      onPauseClick={pauseClickHandler}
-      onPlayClick={playClickHandler}
-      onNextClick={nextClickHandler}
-      onPrevClick={prevClickHandler}
-      onTrackEnd={nextClickHandler}
-      onVolumeChange={actions.setVolume}
+      pause={pauseHandler}
+      play={playHandler}
+      next={nextHandler}
+      prev={prevHandler}
+      trackEnd={nextHandler}
+      setVolume={actions.setVolume}
     />
     <Playlist tracks={state.filteredTracks}
         selected={state.trackId}
         currentTime={state.currentTime}
         filter={state.searchFilter}
-        onTrackClick={trackClickHandler}
+        onTrackClick={trackSelectHandler}
         onSearch={actions.filter}
       />
   </div>
