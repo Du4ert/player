@@ -4,7 +4,7 @@ import {
   NEXT,
   PREV,
   SELECT_TRACK,
-  FILTER,
+  SET_FILTER,
   SET_TIME,
   SET_VOLUME
 
@@ -51,10 +51,10 @@ export function setTrack(id) {
   }
 }
 
-export function filter(filter) {
+export function setFilter(filter) {
   return (dispatch) => {
     dispatch({
-      type: FILTER,
+      type: SET_FILTER,
       payload: filter
     })
   }

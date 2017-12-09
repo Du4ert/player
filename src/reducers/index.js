@@ -5,7 +5,7 @@ import {
   PLAY,
   PAUSE,
   SELECT_TRACK,
-  FILTER,
+  SET_FILTER,
   NEXT,
   PREV,
   SET_TIME,
@@ -25,16 +25,6 @@ const initialState = {
 
 function getTrackData(state) {
   return state.tracks.filter(track => state.trackId === track.id)[0];
-}
-
-function tracksFilter(tracks, filter) {
-  if (filter.length < 3) return tracks;
-  filter = filter.toLowerCase();
-  const filtered = tracks.filter(item => {
-    return item.author.toLowerCase().indexOf(filter) === 0 ||
-           item.name.toLowerCase().indexOf(filter) === 0;
-  })
-  return filtered;
 }
 
 function switchTrack(state, direction) {
@@ -72,7 +62,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isPlaying: true,
-        trackId: state.trackId === '' ? state.filteredTracks[0].id : state.trackId
+        trackId: state.trackId === '' ? state.tracks[0].id : state.trackId
       }
     case PAUSE:
       return {
@@ -99,11 +89,10 @@ export default function(state = initialState, action) {
         isPlaying: true,
         currentTime: 0
       }
-    case FILTER:
+    case SET_FILTER:
       return {
         ...state,
         searchFilter: action.payload,
-        filteredTracks: tracksFilter(state.tracks, action.payload)
       }
     default:
       return state;
