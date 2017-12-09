@@ -5,8 +5,6 @@ import {
   PREV,
   SELECT_TRACK,
   FILTER,
-  TICK,
-  SET_TIMER_ID,
   SET_TIME,
   SET_VOLUME
 
@@ -58,23 +56,6 @@ export function filter(filter) {
     dispatch({
       type: FILTER,
       payload: filter
-    })
-  }
-}
-
-export function tick() {
-  return (dispatch) => {
-    dispatch({
-      type: TICK,
-    })
-  }
-}
-
-export function setTimerId(timerId) {
-  return (dispatch) => {
-    dispatch({
-      type: SET_TIMER_ID,
-      payload: timerId
     })
   }
 }

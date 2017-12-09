@@ -1,15 +1,24 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import '../styles/player.scss';
 import Range from './Range';
 
-class Player extends Component
+class Player extends PureComponent
 {
   constructor(props) {
     super(props);
+    this.timer;
     this.onTimestampChange = this.onTimestampChange.bind(this);
     this.onTimestampChangeEnd = this.onTimestampChangeEnd.bind(this);
     this.onVolumeChange = this.onVolumeChange.bind(this);
+  }
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      this.props.setTime(this.audio.currentTime)
+    }, 1000)
+  }
+  componentWilUnmount() {
+    clearInterval(this.timer);
   }
   componentDidUpdate() {
     if (this.props.isPlaying) {

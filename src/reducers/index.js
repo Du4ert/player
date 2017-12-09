@@ -8,8 +8,6 @@ import {
   FILTER,
   NEXT,
   PREV,
-  TICK,
-  SET_TIMER_ID,
   SET_TIME,
   SET_VOLUME
 } from '../constants';
@@ -64,16 +62,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         volume: action.payload
-      }
-    case TICK:
-      return {
-        ...state,
-        currentTime: state.currentTime + 1
-      }
-    case SET_TIMER_ID:
-      return {
-        ...state,
-        timerId: action.payload
       }
     case SET_TIME:
       return {

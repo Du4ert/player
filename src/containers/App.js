@@ -12,37 +12,14 @@ const App = ({
   const trackSelectHandler = (id) => {
     if (id === state.trackId) {
       if (state.isPlaying) {
-        pauseHandler();
+        actions.pause();
       } else {
-        playHandler();
+        actions.play();
       }
     } else {
       actions.setTrack(id);
-      playHandler();
+      actions.play();
     }
-  }
-  function timeCalcStart() {
-    unsetTimer();
-    actions.setTimerId(setInterval(actions.tick, 1000));
-  }
-  function unsetTimer() {
-    if (state.timerId) clearInterval(state.timerId);
-  }
-  function pauseHandler() {
-    clearInterval(state.timerId);
-    actions.pause();
-  }
-  function playHandler() {
-    timeCalcStart();
-    actions.play();
-  }
-  function nextHandler() {
-    timeCalcStart();
-    actions.nextTrack();
-  }
-  function prevHandler() {
-    timeCalcStart();
-    actions.prevTrack();
   }
   return (
   <div className="playerApp">
@@ -53,11 +30,11 @@ const App = ({
       volume={state.volume}
       setTime={actions.setTime}
       isPlaying={state.isPlaying}
-      pause={pauseHandler}
-      play={playHandler}
-      next={nextHandler}
-      prev={prevHandler}
-      trackEnd={nextHandler}
+      pause={actions.pause}
+      play={actions.play}
+      next={actions.nextTrack}
+      prev={actions.prevTrack}
+      trackEnd={actions.nextTrack}
       setVolume={actions.setVolume}
     />
     <Playlist tracks={state.filteredTracks}
