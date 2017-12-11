@@ -4,10 +4,12 @@
   width: 90%;
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 .player-buttons {
   display: flex;
+  order: 1;
 }
 %btn {
   display: inline-block;
@@ -39,6 +41,7 @@
 
 .player-sound {
   @extend %btn;
+  width: 30px;
   background: url('img/sound.png') top center no-repeat;
 }
 .player-sound_muted {
@@ -54,8 +57,23 @@
 .player-timestamp {
   @extend %range-controls;
   width: 60%;
+  height: 30px;
+  order: 2;
+}
+.player-volume-controls {
+  width: 140px;
+  display: flex;
+  order: 3;
 }
 .player-volume {
   @extend %range-controls;
-  width: 100px;
+  width: 90px;
+}
+
+@media only screen and (max-width: 840px) {
+  .player-timestamp {
+    order: 0;
+    margin-bottom: 5px;
+    width: 100%;
+  }
 }

@@ -83,6 +83,7 @@ class Player extends PureComponent
           ref={elem => this.audio = elem}
           onEnded={trackEnd}
           preload="none"
+          autoPlay
         />
         <Range
           className="player-timestamp"
@@ -93,18 +94,20 @@ class Player extends PureComponent
           onChangeEnd={this.onTimestampChangeEnd}
          />
 
-         <button className={'player-sound ' + (isMuted ? 'player-sound_muted' : '')}
-           onClick={this.onMuteClick}>
-         </button>
+         <div className="player-volume-controls">
+           <button className={'player-sound ' + (isMuted ? 'player-sound_muted' : '')}
+             onClick={this.onMuteClick}>
+           </button>
+          <Range
+            className="player-volume"
+            value={volume}
+            min={0}
+            max={1}
+            onChange={this.onVolumeChange}
+            onChangeEnd={() => {}}
+          />
+         </div>
 
-        <Range
-          className="player-volume"
-          value={volume}
-          min={0}
-          max={1}
-          onChange={this.onVolumeChange}
-          onChangeEnd={() => {}}
-        />
       </div>
     )
   }
