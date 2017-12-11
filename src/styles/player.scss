@@ -2,38 +2,51 @@
 
 .player {
   width: 90%;
-  margin: 10px auto;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
 }
 .player-buttons {
   display: flex;
 }
-.player-btn {
+%btn {
   display: inline-block;
-  width: 20px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
   margin: 0 10px;
-  background: url('img/controls.png') top no-repeat;
+  border: none;
+  &:focus {
+    outline: none;
+    //border: none;
+  }
+}
+.player-btn {
+ @extend %btn;
+  background: url('img/btn.png') top center no-repeat;
 }
 .btn-prev {
-  background-position-x: 0px;
+  background-position-y: -90px;
 }
 .btn-pause {
-  background-position-x: -14px;
-  background-position-y: -24px;
+  background-position-y: -30px;
 }
 .btn-play {
-  background-position-x: 2px;
-  background-position-y: -24px;
+  background-position-y: 0px;
 }
 .btn-next {
-  background-position-x: -14px;
+  background-position-y: -60px;
+}
+
+.player-sound {
+  @extend %btn;
+  background: url('img/sound.png') top center no-repeat;
+}
+.player-sound_muted {
+  background-position-y: -30px;
 }
 
 %range-controls {
-  background: $background-color;
-  width: 60%;
+  background: $background-second;
   border: 1px solid black;
   border-radius: 5px;
 }
@@ -44,12 +57,4 @@
 .player-volume {
   @extend %range-controls;
   width: 100px;
-}
-.filler {
-  box-sizing: content-box;
-  height: 100%;
-  width: 0%;
-  max-width: 100%;
-  background-color: red;
-  box-shadow: inset 7px 9px 15px -9px rgba(0,0,0,0.75);
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-//import '../styles/range.scss';
+import '../styles/range.scss';
 
 const Range = ({value, max, min, onChange, onChangeEnd, className}) => {
 

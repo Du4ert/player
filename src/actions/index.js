@@ -6,7 +6,8 @@ import {
   SELECT_TRACK,
   SET_FILTER,
   SET_TIME,
-  SET_VOLUME
+  SET_VOLUME,
+  SET_MUTE
 
 } from '../constants';
 
@@ -73,6 +74,15 @@ export function setVolume(volume) {
     dispatch({
       type: SET_VOLUME,
       payload: volume
+    })
+  }
+}
+
+export function setMute(mute) {
+  return (dispatch) => {
+    dispatch({
+      type: SET_MUTE,
+      payload: mute
     })
   }
 }

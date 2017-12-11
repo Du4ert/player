@@ -1,0 +1,10 @@
+@import './palette.scss';
+
+.filler {
+  box-sizing: content-box;
+  height: 100%;
+  width: 0%;
+  max-width: 100%;
+  background-color: $divider-color;
+  box-shadow: inset 7px 9px 15px -9px rgba(0,0,0,0.75);
+}

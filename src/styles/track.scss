@@ -3,15 +3,16 @@
   padding: 10px;
 }
 .track_selected {
-  background: $divider-color;
+  background: $selected-track;
 }
 .track-author {
   float: left;
   font-weight: bold;
   margin-left: 10px;
+  color: $divider-color;
 }
 .track-name {
-
+  color: $second-color;
 }
 .track-duration {
   float: right;

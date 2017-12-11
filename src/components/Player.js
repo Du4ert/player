@@ -27,6 +27,7 @@ class Player extends PureComponent
       this.audio.pause();
     }
     this.audio.volume = this.props.volume;
+    if (this.props.isMuted) this.audio.volume = 0;
   }
   onTimestampChange(value) {
     this.props.pause();
@@ -38,6 +39,11 @@ class Player extends PureComponent
   }
   onVolumeChange(value) {
     this.props.setVolume(value);
+    if (value === 0) {
+      this.props.mute(true)
+    } else {
+       this.props.mute(false)
+     }
   }
   render()
   {
@@ -51,7 +57,9 @@ class Player extends PureComponent
        volume,
        currentTime,
        trackUrl,
-       isPlaying
+       isPlaying,
+       isMuted,
+       mute
     } = this.props;
 
     return (
@@ -68,7 +76,7 @@ class Player extends PureComponent
         <audio src={trackUrl}
           ref={elem => this.audio = elem}
           onEnded={trackEnd}
-          preload="true"
+          preload="none"
         />
         <Range
           className="player-timestamp"
@@ -78,6 +86,11 @@ class Player extends PureComponent
           onChange={this.onTimestampChange}
           onChangeEnd={this.onTimestampChangeEnd}
          />
+
+         <button className={'player-sound ' + (isMuted ? 'player-sound_muted' : '')}
+           onClick={() => mute(!isMuted)}>
+         </button>
+
         <Range
           className="player-volume"
           value={volume}

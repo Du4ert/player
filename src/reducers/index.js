@@ -9,7 +9,8 @@ import {
   NEXT,
   PREV,
   SET_TIME,
-  SET_VOLUME
+  SET_VOLUME,
+  SET_MUTE
 } from '../constants';
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
   timer: null,
   isPlaying: false,
   volume: 0.5,
+  isMuted: false,
   searchFilter: '',
   tracks: tracks,
   filteredTracks: tracks
@@ -52,6 +54,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         volume: action.payload
+      }
+    case SET_MUTE:
+      return {
+        ...state,
+        isMuted: action.payload
       }
     case SET_TIME:
       return {

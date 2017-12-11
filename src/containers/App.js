@@ -47,6 +47,8 @@ const App = ({
       prev={actions.prevTrack}
       trackEnd={actions.nextTrack}
       setVolume={actions.setVolume}
+      isMuted={state.isMuted}
+      mute={actions.setMute}
     />
     <Playlist tracks={tracksFilter(state.tracks, state.searchFilter)}
         selected={state.trackId}
