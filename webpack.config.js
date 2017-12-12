@@ -7,9 +7,9 @@ const sass = require('./webpack/sass');
 const css = require('./webpack/css');
 const extractCSS = require('./webpack/css.extract');
 const uglifyJS = require('./webpack/js.uglify');
-const defineJS = require('./webpack/js.define');
 const images = require('./webpack/images');
 const babel = require('./webpack/babel');
+const define = require('./webpack/define');
 
 const PATH = {
   src: path.join(__dirname, 'src'),
@@ -18,7 +18,6 @@ const PATH = {
 
 const common = merge([
     {
-      devtool: 'cheap-module-eval-source-map',
       entry: {
         'index': [
           'react-hot-loader/patch',
@@ -37,10 +36,6 @@ const common = merge([
           template: PATH.src + '/template.html',
           publicPath: '/js/'
         }),
-        new webpack.ProvidePlugin({
-          $: 'jquery',
-          jQuery: 'jquery'
-        })
       ],
     },
     babel(),
@@ -51,9 +46,9 @@ module.exports = function(env) {
   if (env === 'production') {
     return merge([
       common,
-      uglifyJS(),
-      defineJS(),
-      extractCSS()
+      uglifyJS(false),
+      extractCSS(),
+      define()
       ]);
   }
   if (env === 'development') {
@@ -61,7 +56,8 @@ module.exports = function(env) {
         common,
         sass(),
         css(),
-        devserver()
+        devserver(),
+        {devtool: 'cheap-module-eval-source-map'}
       ]);
   }
 }

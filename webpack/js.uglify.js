@@ -6,7 +6,8 @@ module.exports = function(useSourceMap) {
                 sourceMap: useSourceMap,
 
                 compress: {
-                    warnings: false,                }
+                    warnings: false,
+              }
             })
         ]
     };
