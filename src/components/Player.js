@@ -5,7 +5,8 @@ import Range from './Range';
 
 class Player extends PureComponent
 {
-  constructor(props) {
+  constructor(props)
+  {
     super(props);
     this.timer;
 
@@ -14,15 +15,33 @@ class Player extends PureComponent
     this.onVolumeChange = this.onVolumeChange.bind(this);
     this.onMuteClick = this.onMuteClick.bind(this);
   }
-  componentDidMount() {
+  static propTypes = {
+    trackUrl: PropTypes.string,
+    currentTime: PropTypes.number.isRequired,
+    isPlaying: PropTypes.bool.isRequired,
+    volume: PropTypes.number.isRequired,
+    isMuted: PropTypes.bool.isRequired,
+    setTime: PropTypes.func.isRequired,
+    setVolume: PropTypes.func.isRequired,
+    pause: PropTypes.func.isRequired,
+    play: PropTypes.func.isRequired,
+    next: PropTypes.func.isRequired,
+    prev: PropTypes.func.isRequired,
+    trackEnd: PropTypes.func.isRequired,
+    mute: PropTypes.func.isRequired
+  }
+  componentDidMount()
+  {
     this.timer = setInterval(() => {
       this.props.setTime(this.audio.currentTime)
     }, 1000)
   }
-  componentWilUnmount() {
+  componentWilUnmount()
+  {
     clearInterval(this.timer);
   }
-  componentDidUpdate() {
+  componentDidUpdate()
+  {
     if (this.props.isPlaying) {
       this.audio.play();
     } else {
@@ -31,16 +50,19 @@ class Player extends PureComponent
     this.audio.volume = this.props.volume;
     if (this.props.isMuted) this.audio.volume = 0;
   }
-  onTimestampChange(value) {
+  onTimestampChange(value)
+  {
     if (!this.props.trackUrl) return;
     this.props.pause();
     this.props.setTime(value);
     this.audio.currentTime = value;
   }
-  onTimestampChangeEnd() {
+  onTimestampChangeEnd()
+  {
     this.props.play();
   }
-  onVolumeChange(value) {
+  onVolumeChange(value)
+  {
     this.props.setVolume(value);
     if (value === 0) {
       this.props.mute(true)
@@ -48,7 +70,8 @@ class Player extends PureComponent
        this.props.mute(false)
      }
   }
-  onMuteClick(value) {
+  onMuteClick(value)
+  {
     if (this.props.volume === 0) return;
     this.props.mute(!this.props.isMuted);
   }

@@ -40,4 +40,12 @@ const Range = ({value, max, min, onChange, onChangeEnd, className}) => {
   )
 }
 
+Range.propTypes = {
+  className: PropTypes.string,
+  value: PropTypes.number.isRequired,
+  min: PropTypes.number.isRequired,
+  max: PropTypes.number.isRequired,
+  onChange: PropTypes.func,
+  onChangeEnd: PropTypes.func
+}
 export default Range;

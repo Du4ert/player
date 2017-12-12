@@ -1,6 +1,7 @@
 @import './palette.scss';
 .track {
-  padding: 10px;
+  position: relative;
+  padding: 10px 50px 10px 10px;
 }
 .track_selected {
   background: $divider-color;
@@ -18,6 +19,7 @@
   color: $text-color;
 }
 .track-duration {
-  float: right;
+  position: absolute;
+  right: 10px;
   color: $text-color;
 }

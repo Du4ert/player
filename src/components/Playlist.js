@@ -43,5 +43,13 @@ const Playlist = ({
     </div>
   )
 }
+Playlist.propTypes = {
+  tracks: PropTypes.arrayOf(PropTypes.object).isRequired,
+  selected: PropTypes.string,
+  currentTime: PropTypes.number,
+  filter: PropTypes.string,
+  onTrackClick: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired
 
+}
 export default Playlist;

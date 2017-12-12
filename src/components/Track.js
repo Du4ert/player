@@ -26,5 +26,11 @@ const Track = ({
     </div>
   )
 }
-
+Track.propTypes = {
+  author: PropTypes.string,
+  name: PropTypes.string,
+  url: PropTypes.string,
+  duration: PropTypes.string,
+  currentTime: PropTypes.number
+}
 export default Track;

@@ -37,7 +37,7 @@ const App = ({
     <Player trackId={trackData.id}
       trackUrl={trackData.url}
       currentTime={state.currentTime}
-      duration={trackData.duration}
+      duration={parseFloat(trackData.duration) || 0}
       volume={state.volume}
       setTime={actions.setTime}
       isPlaying={state.isPlaying}
@@ -58,7 +58,7 @@ const App = ({
         onSearch={actions.setFilter}
       />
   </div>
-)
+  )
 }
 
 function mapStateToProps(state) {

@@ -16,7 +16,6 @@ import {
 const initialState = {
   trackId: '',
   currentTime: 0,
-  timer: null,
   isPlaying: false,
   volume: 0.5,
   isMuted: false,
