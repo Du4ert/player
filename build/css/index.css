@@ -1,0 +1,189 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/*end reset*/
+.playerApp {
+  background: #3e4998;
+  color: #000;
+  padding: 10px; }
+.player {
+  width: 90%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between; }
+
+.player-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1; }
+
+.player-btn, .player-sound {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+  border: none;
+  cursor: pointer; }
+  .player-btn:focus, .player-sound:focus {
+    outline: none; }
+
+.player-btn {
+  background: url(../images/btn.png) top center no-repeat; }
+
+.btn-prev {
+  background-position-y: -90px; }
+
+.btn-pause {
+  background-position-y: -30px; }
+
+.btn-play {
+  background-position-y: 0px; }
+
+.btn-next {
+  background-position-y: -60px; }
+
+.player-sound {
+  width: 30px;
+  background: url(../images/sound.png) top center no-repeat; }
+
+.player-sound_muted {
+  background-position-y: -30px; }
+
+.player-timestamp, .player-volume {
+  padding: 2px;
+  background: #3e4998;
+  box-shadow: inset 1px 2px 4px 3px rgba(0, 0, 0, 0.75);
+  border-radius: 5px; }
+
+.player-timestamp {
+  width: 60%;
+  height: 30px;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2; }
+
+.player-volume-controls {
+  width: 140px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3; }
+
+.player-volume {
+  width: 90px; }
+
+@media only screen and (max-width: 840px) {
+  .player > * {
+    margin-bottom: 5px; }
+  .player-timestamp {
+    -webkit-box-ordinal-group: 1;
+        -ms-flex-order: 0;
+            order: 0;
+    width: 100%; } }
+
+@media only screen and (max-width: 400px) {
+  .player-volume-controls {
+    width: 140px; }
+  .player-btn {
+    margin: 0 5px; } }
+.filler {
+  box-sizing: content-box;
+  height: 100%;
+  width: 0%;
+  max-width: 100%;
+  background-color: #ff6e6e;
+  box-shadow: inset 1px 2px 7px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 5px 0 0 5px; }
+.track {
+  position: relative;
+  padding: 10px 50px 10px 10px; }
+
+.track_selected {
+  background: #ff6e6e; }
+
+.track_selected .track-author {
+  color: #fff; }
+
+.track-author {
+  float: left;
+  font-weight: bold;
+  margin-left: 10px;
+  color: #ff6e6e; }
+
+.track-name {
+  color: #fff; }
+
+.track-duration {
+  position: absolute;
+  right: 10px;
+  color: #fff; }
+.playlist {
+  width: 90%;
+  margin: 10px auto; }
+
+.playlist-search {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 10px 0;
+  padding: 5px;
+  border-radius: 5px;
+  background: #ccc; }
+
+.playlist-list {
+  border: 1px solid #ccc;
+  border-radius: 5px; }
